@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Archive | Hexo</title>
+    <title>深入浅出－iOS内存分配与分区 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   ###1. RAM ROM  RAM：运行内存，不能掉电存储。ROM：存储性内存，可以掉电存储，例如内存卡、Flash。     由于RAM类型不具备掉电存储能力（即一掉电数据消失），所以app程序一般存放于ROM中。RAM的访问速">
+<meta name="keywords" content="网络,深入浅出,iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入浅出－iOS内存分配与分区">
+<meta property="og:url" content="http://yoursite.com/2016/07/28/深入浅出－iOS内存分配与分区/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   ###1. RAM ROM  RAM：运行内存，不能掉电存储。ROM：存储性内存，可以掉电存储，例如内存卡、Flash。     由于RAM类型不具备掉电存储能力（即一掉电数据消失），所以app程序一般存放于ROM中。RAM的访问速">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-1d0de5ca1edc35af?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-11-14T16:39:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="深入浅出－iOS内存分配与分区">
+<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   ###1. RAM ROM  RAM：运行内存，不能掉电存储。ROM：存储性内存，可以掉电存储，例如内存卡、Flash。     由于RAM类型不具备掉电存储能力（即一掉电数据消失），所以app程序一般存放于ROM中。RAM的访问速">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1156719-1d0de5ca1edc35af?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
 
     
@@ -185,61 +192,21 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2016</h1>
-            </div>
+            <section id="main"><article id="post-深入浅出－iOS内存分配与分区" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/">深入浅出－网络七层模型&amp;&amp;网络数据包</a>
+        <h1 class="article-title" itemprop="name">
+            深入浅出－iOS内存分配与分区
         </h1>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/">
-            <time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/深入浅出/">深入浅出</a>, <a class="tag-link" href="/tags/网络/">网络</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/28/深入浅出－iOS内存分配与分区/">深入浅出－iOS内存分配与分区</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2016/07/28/深入浅出－iOS内存分配与分区/">
@@ -248,167 +215,189 @@
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/iOS/">iOS</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/深入浅出/">深入浅出</a>, <a class="tag-link" href="/tags/网络/">网络</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/">深入浅出－iOS Block原理和内存中位置</a>
-        </h1>
-    
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <hr>
+<ul>
+<li>Posted by <a href="http://weibo.com/yangsanchao" target="_blank" rel="external">微博@iOS音视频</a></li>
+<li><a href="http://www.jianshu.com/users/9913981cb400/latest_articles" target="_blank" rel="external">原创文章</a>，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
+</ul>
+<hr>
+<p>###1. RAM ROM</p>
+<blockquote>
+<p>RAM：运行内存，不能掉电存储。ROM：存储性内存，可以掉电存储，例如内存卡、Flash。<br>     由于RAM类型不具备掉电存储能力（即一掉电数据消失），所以app程序一般存放于ROM中。RAM的访问速度要远高于ROM，价格也要高。</p>
+</blockquote>
+<p>###2. App程序启动</p>
+<blockquote>
+<p>App程序启动，系统会把开启的那个App程序从Flash或ROM里面拷贝到内存（RAM），然后从内存里面执行代码。<br>另一个原因是CPU不能直接从内存卡里面读取指令（需要Flash驱动等等）。</p>
+</blockquote>
+<p>###3.  内存分区：</p>
+<blockquote>
+<ul>
+<li>栈区（stack）：<ul>
+<li>存放的局部变量、先进后出、一旦出了作用域就会被销毁；函数跳转地址，现场保护等；</li>
+<li>程序猿不需要管理栈区变量的内存；<br>-栈区地址从高到低分配；     </li>
+</ul>
+</li>
+<li>堆区（heap）：<ul>
+<li>堆区的内存分配使用的是alloc；</li>
+<li>需要程序猿管理内存；</li>
+<li>ARC的内存的管理，是编译器再便宜的时候自动添加 retain、release、autorelease；</li>
+<li>堆区的地址是从低到高分配）</li>
+</ul>
+</li>
+<li>全局区／静态区（static）：<ul>
+<li>包括两个部分：未初始化过 、初始化过；<br>也就是说，（全局区／静态区）在内存中是放在一起的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域；<br>eg：int a;未初始化的。int a = 10;已初始化的。</li>
+</ul>
+</li>
+<li>常量区：常量字符串就是放在这里；</li>
+<li>代码区： 存放App代码；</li>
+</ul>
+</blockquote>
+<p>如下图所示：代码区存放于低地址，栈区存放于高地址。区与区之间并不是连续的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1156719-1d0de5ca1edc35af?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong><strong>注意事项</strong></strong></p>
+<ul>
+<li>在iOS中，堆区的内存是应用程序共享的，堆中的内存分配是系统负责的；</li>
+<li>系统使用一个链表来维护所有已经分配的内存空间（系统仅仅纪录，并不管理具体的内容）；</li>
+<li>变量使用结束后，需要释放内存，OC中是根据引用计数＝＝0，就说明没有任何变量使用该空间，那么系统将直接收回；</li>
+<li>当一个app启动后，代码区，常量区，全局区大小已固定，因此指向这些区的指针不会产生崩溃性的错误。而堆区和栈区是时时刻刻变化的（堆的创建销毁，栈的弹入弹出），所以当使用一个指针指向这两个区里面的内存时，一定要注意内存是否已经被释放，否则会产生程序崩溃（也即是野指针报错）。</li>
+</ul>
+<h3 id="其它操作系统"><a href="#其它操作系统" class="headerlink" title="其它操作系统"></a>其它操作系统</h3><ul>
+<li><p>iOS是基于UNIX、Android是基于Linux的，在Linux和unix系统中，内存管理的方式基本相同；</p>
+</li>
+<li><p>Android应用程序的内存分配也是如此。除此以外，这些应用层的程序使用的都是虚拟内存，它们都是建立在操作系统之上的，只有开发底层驱动或板级支持包时才会接触到物理内存;<br>举例：在嵌入式Linux中，实际的物理地址只有64M甚至更小，但是虚拟内存却可以高达4G;</p>
+</li>
+</ul>
+<hr>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/">
-            <time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/深入浅出/">深入浅出</a>, <a class="tag-link" href="/tags/网络/">网络</a>
-    </div>
-
-                </div>
-            </div>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/">深入浅出－iOS的TCP/IP协议族剖析&amp;&amp;Socket</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/">
-            <time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/深入浅出/">深入浅出</a>, <a class="tag-link" href="/tags/网络/">网络</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/">深入浅出－iOS Reactive Cocoa的常见用法</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/">
-            <time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/深入浅出/">深入浅出</a>, <a class="tag-link" href="/tags/网络/">网络</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/07/28/深入浅出－iOS函数式编程的实现 && 响应式编程概念/">深入浅出－iOS函数式编程的实现 &amp;&amp; 响应式编程概念</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/28/深入浅出－iOS函数式编程的实现 && 响应式编程概念/">
-            <time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/iOS/">iOS</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/深入浅出/">深入浅出</a>, <a class="tag-link" href="/tags/网络/">网络</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
+
+    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS内存分配与分区/" data-id="cj9zu6y3w000yacs6yw7aimv1" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Plus récent</strong>
+            <div class="article-nav-title">
+                
+                    深入浅出－网络七层模型&amp;&amp;网络数据包
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Plus ancien</strong>
+            <div class="article-nav-title">深入浅出－iOS Block原理和内存中位置</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 
