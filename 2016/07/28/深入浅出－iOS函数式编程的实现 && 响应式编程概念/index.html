@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
     <meta charset="utf-8">
     
-    <title>深入浅出－iOS函数式编程的实现 &amp;&amp; 响应式编程概念 | Hexo</title>
+    <title>深入浅出－iOS函数式编程的实现 &amp;&amp; 响应式编程概念 | Yangsc</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #简介本篇主要回顾一下－－iOS函数式编程 &amp;amp;&amp;amp; 响应式编程概念 ,如何一步步实现函数式编程的过程，对阅读Masonry  &amp;amp;&amp;amp;  SnapKit源码有一定的帮助。 作为一个iOS 开发者，那么你一定">
+    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   简介本篇主要回顾一下－－iOS函数式编程 &amp;amp;&amp;amp; 响应式编程概念 ,如何一步步实现函数式编程的过程，对阅读Masonry  &amp;amp;&amp;amp;  SnapKit源码有一定的帮助。 作为一个iOS 开发者，那么你一定用">
 <meta name="keywords" content="网络,深入浅出,iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出－iOS函数式编程的实现 &amp;&amp; 响应式编程概念">
 <meta property="og:url" content="http://yoursite.com/2016/07/28/深入浅出－iOS函数式编程的实现 && 响应式编程概念/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #简介本篇主要回顾一下－－iOS函数式编程 &amp;amp;&amp;amp; 响应式编程概念 ,如何一步步实现函数式编程的过程，对阅读Masonry  &amp;amp;&amp;amp;  SnapKit源码有一定的帮助。 作为一个iOS 开发者，那么你一定">
+<meta property="og:site_name" content="Yangsc">
+<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   简介本篇主要回顾一下－－iOS函数式编程 &amp;amp;&amp;amp; 响应式编程概念 ,如何一步步实现函数式编程的过程，对阅读Masonry  &amp;amp;&amp;amp;  SnapKit源码有一定的帮助。 作为一个iOS 开发者，那么你一定用">
+<meta property="og:locale" content="english">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-0b8d16e0afecec99.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-14T16:38:21.000Z">
+<meta property="og:updated_time" content="2017-11-16T17:53:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出－iOS函数式编程的实现 &amp;&amp; 响应式编程概念">
-<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #简介本篇主要回顾一下－－iOS函数式编程 &amp;amp;&amp;amp; 响应式编程概念 ,如何一步步实现函数式编程的过程，对阅读Masonry  &amp;amp;&amp;amp;  SnapKit源码有一定的帮助。 作为一个iOS 开发者，那么你一定">
+<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   简介本篇主要回顾一下－－iOS函数式编程 &amp;amp;&amp;amp; 响应式编程概念 ,如何一步步实现函数式编程的过程，对阅读Masonry  &amp;amp;&amp;amp;  SnapKit源码有一定的帮助。 作为一个iOS 开发者，那么你一定用">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1156719-0b8d16e0afecec99.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
 
@@ -52,7 +53,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">Hexo</span>
+                <span class="site-title">Yangsc</span>
             </a>
             <nav id="main-nav">
                 
@@ -81,7 +82,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -100,9 +101,9 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Articles',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Catégories',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
@@ -134,7 +135,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -154,16 +155,16 @@
             <h2 id="name">Yangsc</h2>
             <h3 id="title">iOS Developer &amp; Concentrate on AV &amp; big data</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
-            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">SUIVRE</a>
+            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
                 6
-                <span>Articles</span>
+                <span>posts</span>
             </div>
             <div class="article-info-block">
                 3
-                <span>Tags</span>
+                <span>tags</span>
             </div>
         </div>
         
@@ -241,45 +242,48 @@
 <li><a href="http://www.jianshu.com/users/9913981cb400/latest_articles" target="_blank" rel="external">原创文章</a>，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
 </ul>
 <hr>
-<p>#简介<br>本篇主要回顾一下<strong><em>－－iOS函数式编程 &amp;&amp; 响应式编程概念</em></strong> ,如何一步步实现函数式编程的过程，对阅读<code>Masonry  &amp;&amp;  SnapKit</code>源码有一定的帮助。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本篇主要回顾一下<strong><em>－－iOS函数式编程 &amp;&amp; 响应式编程概念</em></strong> ,如何一步步实现函数式编程的过程，对阅读<code>Masonry  &amp;&amp;  SnapKit</code>源码有一定的帮助。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1156719-0b8d16e0afecec99.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图"><br>作为一个iOS 开发者，那么你一定用过Masnory/ SnapKit；</p>
 <ul>
 <li>Masonry是一个OC开发中，非常好用的自动布局的第三方框架；</li>
 <li>SnapKit是Masonry团队打造的swift版本的自动布局框架；<br>如果你没有用过，在自动布局中用的是苹果原生的或者原生的升级版VFL语言，那我只好为你点“赞”！</li>
 </ul>
-<p>##一个典型的Masonry的语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make.centerY.equalTo(self.view).offset(100);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="一个典型的Masonry的语句："><a href="#一个典型的Masonry的语句：" class="headerlink" title="一个典型的Masonry的语句："></a>一个典型的Masonry的语句：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make.centerY.equalTo(self.view).offset(100);</span><br></pre></td></tr></table></figure>
 <p>就是这个“.”让Masonry更加鲜活的展示给了开发者，在我心中<br>Masnory/ SnapKit函数式编程的一个经典的代表作，非常值得参考和学习！</p>
 <p>链式编程的好处不用再说了，用过Masnory/ SnapKit的都知道；</p>
-<p>##那么问题来了，怎么写链式编程呢？</p>
-<p>一步步来实现一个函数式编程</p>
+<h2 id="那么问题来了，怎么写链式编程呢？"><a href="#那么问题来了，怎么写链式编程呢？" class="headerlink" title="那么问题来了，怎么写链式编程呢？"></a>那么问题来了，怎么写链式编程呢？</h2><p>一步步来实现一个函数式编程</p>
 <ol>
 <li>新建项目command +shift + N   </li>
-<li>创建一个Person类<br>  并为其增加两个方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">     - (void)run;</span><br><span class="line">     - (void)study;</span><br></pre></td></tr></table></figure>
-</li>
+<li>创建一个Person类<br>  并为其增加两个方法</li>
 </ol>
-<p>简单实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     - (void)run&#123;</span><br><span class="line">      NSLog(@&quot;run&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">     - (void)study &#123;</span><br><span class="line">      NSLog(@&quot;study&quot;)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">     - (void)run;</span><br><span class="line">     - (void)study;</span><br></pre></td></tr></table></figure>
+<p>简单实现： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     - (void)run&#123;</span><br><span class="line">      NSLog(@&quot;run&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">     - (void)study &#123;</span><br><span class="line">      NSLog(@&quot;study&quot;)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
 <ol>
-<li>实例化并调用相关的方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Person*person = [[Personalloc]init];</span><br><span class="line">    [personrun];</span><br><span class="line">    [personstudy];</span><br></pre></td></tr></table></figure>
-</li>
+<li>实例化并调用相关的方法</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    Person*person = [[Personalloc]init];</span><br><span class="line">    [personrun];</span><br><span class="line">    [personstudy];</span><br></pre></td></tr></table></figure>
 <p>以上三步实现了一个非常简单的程序；</p>
-<p>最终目标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    person.runBlock().studyBlock().runBlock();</span><br><span class="line">    person.studyBlock().studyBlock().runBlock();</span><br></pre></td></tr></table></figure></p>
-<p>分解目标<br>     1.先实现这种方式调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">      [[person run1] study1];</span><br><span class="line">```   </span><br><span class="line">  2.再实现最终目标</span><br><span class="line">        </span><br><span class="line">显然，如果想要实现[person run1]调用一个方法，那么run1就需要一个返回一个对象，让这个对象去调用study1。</span><br><span class="line"> 这样分析后，就简单了，就是增加一个返回值。</span><br><span class="line">&gt; 代码</span><br><span class="line">方法的声明</span><br></pre></td></tr></table></figure></p>
-<p>-(Person<em>)run1;<br>-(Person</em>)study1;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">方法的实现</span><br></pre></td></tr></table></figure></p>
+<p>最终目标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    person.runBlock().studyBlock().runBlock();</span><br><span class="line">    person.studyBlock().studyBlock().runBlock();</span><br></pre></td></tr></table></figure>
+<p>分解目标<br>     1.先实现这种方式调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">      [[person run1] study1];</span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">  2.再实现最终目标</span><br><span class="line">        </span><br><span class="line">显然，如果想要实现[person run1]调用一个方法，那么run1就需要一个返回一个对象，让这个对象去调用study1。</span><br><span class="line"> 这样分析后，就简单了，就是增加一个返回值。</span><br><span class="line">&gt; 代码</span><br><span class="line">方法的声明</span><br></pre></td></tr></table></figure>
+<p>-(Person<em>)run1;<br>-(Person</em>)study1; </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">方法的实现</span><br></pre></td></tr></table></figure>
 <ul>
 <li>(Person*)run1 {<pre><code>NSLog(@&quot;run&quot;);
 return [[Personalloc] init];
 </code></pre>}</li>
-<li><p>(Person*)study1{</p>
-<pre><code>NSLog(@&quot;study&quot;);
+<li>(Person*)study1{<pre><code>NSLog(@&quot;study&quot;);
 return[[Personalloc]init];
-</code></pre><p>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实现最终目标： </span><br><span class="line">```   </span><br><span class="line">    person.runBlock().studyBlock().runBlock();</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">  在OC中，｀()｀block是以`()`的形式去执行的，猜想如果返回一个block的话，那么我就可以用`()`来实现runBlock()这种效果了吧！</span><br><span class="line">     再结合我们的分解步骤，runBlock()代表执行了一个block，如果这个block的返回值的是一个对象的话，那么调用另外一个方法；这样就可以一直链接下去吧！实现了我们想要的目标！</span><br><span class="line"></span><br><span class="line">&gt;代码：</span><br><span class="line"> 声明</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>(Person* (^)())runBlock;</p>
-</li>
+</code></pre>}</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实现最终目标： </span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line">    person.runBlock().studyBlock().runBlock();</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">  在OC中，｀()｀block是以`()`的形式去执行的，猜想如果返回一个block的话，那么我就可以用`()`来实现runBlock()这种效果了吧！</span><br><span class="line">     再结合我们的分解步骤，runBlock()代表执行了一个block，如果这个block的返回值的是一个对象的话，那么调用另外一个方法；这样就可以一直链接下去吧！实现了我们想要的目标！</span><br><span class="line"></span><br><span class="line">&gt;代码：</span><br><span class="line"> 声明</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(Person* (^)())runBlock;</li>
 <li><p>(Person* (^)())studyBlock;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实现：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实现：</span><br></pre></td></tr></table></figure>
 <ul>
 <li>(Person<em> (^)())runBlock {<br>   Person</em> (^block)() = ^() {            <pre><code>        NSLog(@&quot;run&quot;);           
        return self;        
@@ -293,16 +297,17 @@ return self;
 </ul>
 </li>
 </ul>
-<p>make.right.equalTo(self.right).insets(kPadding);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">最终调用的函数：</span><br><span class="line">返回的就是一个返回值为MASConstraint的block</span><br></pre></td></tr></table></figure></p>
+<p>make.right.equalTo(self.right).insets(kPadding);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最终调用的函数：</span><br><span class="line">返回的就是一个返回值为MASConstraint的block</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>(MASConstraint* (^)(id))equalTo {<br>return ^id(idattribute) {               <pre><code>return self.equalToWithRelation(attribute,NSLayoutRelationEqual);
-</code></pre>  };<br>}<br>```<br>#函数式编程总结</li>
+</code></pre>  };<br>}<br>```</li>
+</ul>
+<h1 id="函数式编程总结"><a href="#函数式编程总结" class="headerlink" title="函数式编程总结"></a>函数式编程总结</h1><ul>
 <li>如果想再去调用别的方法，那么就需要返回一个对象；</li>
 <li>如果想用()去执行，那么需要返回一个block；</li>
 <li>如果想让返回的block再调用对象的方法，那么这个block就需要返回一个对象（即返回值为一个对象的block）。</li>
 </ul>
-<p>#响应式编程的概念</p>
-<blockquote>
+<h1 id="响应式编程的概念"><a href="#响应式编程的概念" class="headerlink" title="响应式编程的概念"></a>响应式编程的概念</h1><blockquote>
 <p>在网上流传一个非常经典的解释｀响应式编程的概念｀<br>     在程序开发中：<br>     a ＝ b ＋ c<br>     赋值之后 b 或者 c 的值变化后，a 的值不会跟着变化<br>    响应式编程，目标就是，如果 b 或者 c 的数值发生变化，a 的数值会同时发生变化；</p>
 </blockquote>
 <p>在上篇博客中<a href="http://www.jianshu.com/p/e63261712172" target="_blank" rel="external">《iOS－Reactive Cocoa的常见用法》</a><br>Reactive Cocoa就是一个响应式编程的经典作品！</p>
@@ -316,7 +321,7 @@ return self;
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS函数式编程的实现 && 响应式编程概念/" data-id="cj9zucd8w001iacs6v3ud94w1" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS函数式编程的实现 && 响应式编程概念/" data-id="cja2rnjn30009hxs6ptt8jd7u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -391,11 +396,11 @@ return self;
         
 <nav id="article-nav">
     
-        <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus récent</strong>
+        <a href="/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    深入浅出－iOS Reactive Cocoa的常见用法
+                    深入浅出－iOS的TCP/IP协议族剖析&amp;&amp;Socket
                 
             </div>
         </a>
@@ -418,14 +423,14 @@ return self;
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Récents</h3>
+        <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -436,7 +441,7 @@ return self;
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -463,7 +468,7 @@ return self;
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -474,7 +479,26 @@ return self;
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
+                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -498,25 +522,6 @@ return self;
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
-                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -524,7 +529,7 @@ return self;
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Catégories</h3>
+        <h3 class="widget-title">categories</h3>
         <div class="widget">
             <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li></ul>
         </div>
@@ -533,7 +538,7 @@ return self;
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archives</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
@@ -542,7 +547,7 @@ return self;
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Tags</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深入浅出/">深入浅出</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">6</span></li></ul>
         </div>
@@ -551,7 +556,7 @@ return self;
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Nuage de tags</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
             <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/深入浅出/" style="font-size: 10px;">深入浅出</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
         </div>
@@ -560,12 +565,12 @@ return self;
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">Liens</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
                     <li>
-                        <a href="https://github.com/yangsanchao/">Hexo</a>
+                        <a href="https://github.com/yangsanchao/">yangsanchao</a>
                     </li>
                 
             </ul>

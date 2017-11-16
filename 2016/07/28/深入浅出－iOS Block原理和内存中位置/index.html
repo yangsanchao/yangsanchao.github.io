@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
     <meta charset="utf-8">
     
-    <title>深入浅出－iOS Block原理和内存中位置 | Hexo</title>
+    <title>深入浅出－iOS Block原理和内存中位置 | Yangsc</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，自由转载-非商用-非衍生-保持署名    #简介今天回顾一下blcok，基本用法在我的这篇文章中有较为详细的描述，这次不再回顾，本次 block的原理和内存中的位置 是主角。  如何理解blcokblock：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。 #底层实现block是一个指针结构体，在终端下通过clang -rew">
+    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，自由转载-非商用-非衍生-保持署名    简介今天回顾一下blcok，基本用法在我的这篇文章中有较为详细的描述，这次不再回顾，本次 block的原理和内存中的位置 是主角。  如何理解blcokblock：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。 底层实现block是一个指针结构体，在终端下通过clang -rewri">
 <meta name="keywords" content="网络,深入浅出,iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出－iOS Block原理和内存中位置">
 <meta property="og:url" content="http://yoursite.com/2016/07/28/深入浅出－iOS Block原理和内存中位置/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，自由转载-非商用-非衍生-保持署名    #简介今天回顾一下blcok，基本用法在我的这篇文章中有较为详细的描述，这次不再回顾，本次 block的原理和内存中的位置 是主角。  如何理解blcokblock：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。 #底层实现block是一个指针结构体，在终端下通过clang -rew">
+<meta property="og:site_name" content="Yangsc">
+<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，自由转载-非商用-非衍生-保持署名    简介今天回顾一下blcok，基本用法在我的这篇文章中有较为详细的描述，这次不再回顾，本次 block的原理和内存中的位置 是主角。  如何理解blcokblock：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。 底层实现block是一个指针结构体，在终端下通过clang -rewri">
+<meta property="og:locale" content="english">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-a96232209ba9b37c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-14T16:39:05.000Z">
+<meta property="og:updated_time" content="2017-11-16T17:43:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出－iOS Block原理和内存中位置">
-<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，自由转载-非商用-非衍生-保持署名    #简介今天回顾一下blcok，基本用法在我的这篇文章中有较为详细的描述，这次不再回顾，本次 block的原理和内存中的位置 是主角。  如何理解blcokblock：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。 #底层实现block是一个指针结构体，在终端下通过clang -rew">
+<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，自由转载-非商用-非衍生-保持署名    简介今天回顾一下blcok，基本用法在我的这篇文章中有较为详细的描述，这次不再回顾，本次 block的原理和内存中的位置 是主角。  如何理解blcokblock：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。 底层实现block是一个指针结构体，在终端下通过clang -rewri">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1156719-a96232209ba9b37c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
 
@@ -52,7 +53,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">Hexo</span>
+                <span class="site-title">Yangsc</span>
             </a>
             <nav id="main-nav">
                 
@@ -81,7 +82,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -100,9 +101,9 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Articles',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Catégories',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
@@ -134,7 +135,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -154,16 +155,16 @@
             <h2 id="name">Yangsc</h2>
             <h3 id="title">iOS Developer &amp; Concentrate on AV &amp; big data</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
-            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">SUIVRE</a>
+            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
                 6
-                <span>Articles</span>
+                <span>posts</span>
             </div>
             <div class="article-info-block">
                 3
-                <span>Tags</span>
+                <span>tags</span>
             </div>
         </div>
         
@@ -241,27 +242,27 @@
 <li><a href="http://www.jianshu.com/users/9913981cb400/latest_articles" target="_blank" rel="external">原创文章</a>，自由转载-非商用-非衍生-保持署名 </li>
 </ul>
 <hr>
-<p>#简介<br>今天回顾一下blcok，基本用法<a href="http://blog.csdn.net/yang198907/article/details/50199575" target="_blank" rel="external">在我的这篇文章中有较为详细的描述</a>，这次不再回顾，本次 <strong><em>block的原理和内存中的位置</em></strong> 是主角。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天回顾一下blcok，基本用法<a href="http://blog.csdn.net/yang198907/article/details/50199575" target="_blank" rel="external">在我的这篇文章中有较为详细的描述</a>，这次不再回顾，本次 <strong><em>block的原理和内存中的位置</em></strong> 是主角。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1156719-a96232209ba9b37c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h1 id="如何理解blcok"><a href="#如何理解blcok" class="headerlink" title="如何理解blcok"></a>如何理解blcok</h1><p>block：可以理解为匿名的函数，就是预先准备好的一段代码，在需要的时候调用。</p>
-<p>#底层实现<br>block是一个指针结构体，在终端下通过clang -rewrite-objc 指令看看C++代码。</p>
-<p>创建一个OS X 工程，写一个最简单的block<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line"></span><br><span class="line">        void (^myblock)() = ^() &#123;</span><br><span class="line">            NSLog(@&quot;hello block&quot;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        myblock();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>利用终端编译生成C++代码：<br><figure class="highlight plain"><figcaption><span>-rewrite-objc main.m```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">几个重要的结构体和函数简介：</span><br><span class="line">- __block_impl：这是一个结构体，也是C面向对象的体现，可以理解为block的基类;</span><br><span class="line">- __main_block_impl_0: 可以理解为block变量;</span><br><span class="line">- __main_block_func_0: 可以理解为匿名函数；</span><br><span class="line">- __main_block_desc_0:block的描述, Block_size;</span><br></pre></td></tr></table></figure></p>
-<p>1、__block_impl</p>
-<p>struct __block_impl {<br>  void <em>isa;<br>  int Flags;<br>  int Reserved;<br>  void </em>FuncPtr;<br>};</p>
-<p>2、__main_block_impl_0</p>
-<p>struct <strong>main_block_impl_0 {<br>  struct </strong>block_impl impl;<br>  struct <strong>main_block_desc_0* Desc;
-  </strong>main_block_impl_0(void <em>fp, struct __main_block_desc_0 </em>desc, int flags=0) {<br>    impl.isa = &amp;_NSConcreteStackBlock;<br>    impl.Flags = flags;<br>    impl.FuncPtr = fp;<br>    Desc = desc;<br>  }<br>};</p>
-<p>3、__main_block_func_0</p>
-<p>static void <strong>main_block_func_0(struct </strong>main_block_impl_0 <em>__cself) {<br>            NSLog((NSString </em>)&amp;<strong>NSConstantStringImpl</strong>var_folders_gc_5fkhcz0n6px48vzc744hmp6c0000gn_T_main_eef954_mi_0);<br>        }</p>
-<p>4、 __main_block_desc_0</p>
-<p>staticstruct <strong>main_block_desc_0 {<br>  size_t reserved;<br>  size_t Block_size;<br>} </strong>main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};</p>
-<p>int main(int argc, const char <em> argv[]) {<br>    /</em> @autoreleasepool <em>/ { <strong>AtAutoreleasePool </strong>autoreleasepool;<br>        void (</em>myblock)() = ((void (<em>)())&amp;__main_block_impl_0((void </em>)<strong>main_block_func_0, &amp;</strong>main_block_desc_0_DATA));<br>        ((void (<em>)(__block_impl </em>))((<strong>block_impl *)myblock)-&gt;FuncPtr)((</strong>block_impl *)myblock);<br>    }<br>    return 0;<br>}<br>```</p>
+<h1 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h1><p>block是一个指针结构体，在终端下通过clang -rewrite-objc 指令看看C++代码。</p>
+<a id="more"></a>
+<p>创建一个OS X 工程，写一个最简单的block</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line"></span><br><span class="line">        void (^myblock)() = ^() &#123;</span><br><span class="line">            NSLog(@&quot;hello block&quot;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        myblock();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用终端编译生成C++代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang -rewrite-objc main.m</span><br></pre></td></tr></table></figure>
+<p>几个重要的结构体和函数简介：</p>
+<ul>
+<li>__block_impl：这是一个结构体，也是C面向对象的体现，可以理解为block的基类;</li>
+<li>__main_block_impl_0: 可以理解为block变量;</li>
+<li>__main_block_func_0: 可以理解为匿名函数；</li>
+<li>__main_block_desc_0:block的描述, Block_size;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">1、__block_impl</span><br><span class="line"></span><br><span class="line">struct __block_impl &#123;</span><br><span class="line">  void *isa;</span><br><span class="line">  int Flags;</span><br><span class="line">  int Reserved;</span><br><span class="line">  void *FuncPtr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">2、__main_block_impl_0</span><br><span class="line"></span><br><span class="line">struct __main_block_impl_0 &#123;</span><br><span class="line">  struct __block_impl impl;</span><br><span class="line">  struct __main_block_desc_0* Desc;</span><br><span class="line">  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">3、__main_block_func_0</span><br><span class="line"></span><br><span class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_gc_5fkhcz0n6px48vzc744hmp6c0000gn_T_main_eef954_mi_0);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">4、 __main_block_desc_0</span><br><span class="line"></span><br><span class="line">staticstruct __main_block_desc_0 &#123;</span><br><span class="line">  size_t reserved;</span><br><span class="line">  size_t Block_size;</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; 0, sizeof(struct __main_block_impl_0)&#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    /* @autoreleasepool */ &#123; __AtAutoreleasePool __autoreleasepool;</span><br><span class="line">        void (*myblock)() = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA));</span><br><span class="line">        ((void (*)(__block_impl *))((__block_impl *)myblock)-&gt;FuncPtr)((__block_impl *)myblock);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注意事项：block容易造成循环引用，在block里面如果使用了self，然后形成强引用时，需要打断循环引用；在MRC下用_block，在ARC下使用__weak;</li>
 </ul>
-<p>#关于block在内存中的位置</p>
-<p>##深入理解<br>block快的存储位置（block入口的地址）可能存放在3个地方：代码区（全局区）、堆区、栈区（ARC情况下回自动拷贝到堆区、因此ARC下只有两个地方：代码区和堆区）。</p>
+<h1 id="关于block在内存中的位置"><a href="#关于block在内存中的位置" class="headerlink" title="关于block在内存中的位置"></a>关于block在内存中的位置</h1><h2 id="深入理解"><a href="#深入理解" class="headerlink" title="深入理解"></a>深入理解</h2><p>block快的存储位置（block入口的地址）可能存放在3个地方：代码区（全局区）、堆区、栈区（ARC情况下回自动拷贝到堆区、因此ARC下只有两个地方：代码区和堆区）。</p>
 <ul>
 <li>代码区：不访问栈区的变量（如局部变量），且不访问堆区的变量（如用alloc创建的对象）时，此时block存放在代码区；</li>
 <li>堆区：如果访问了堆区的变量（如局部变量），或堆区的变量（如用alloc创建的对象），此时block存方在堆区；<strong>–需要注意</strong><ul>
@@ -271,8 +272,7 @@
 </li>
 </ul>
 <p>如果看的不太明白，需要先<a href="http://www.jianshu.com/p/7bbbe5d55440" target="_blank" rel="external">补充点iOS内存的知识</a></p>
-<p>##简单记忆：</p>
-<blockquote>
+<h2 id="简单记忆："><a href="#简单记忆：" class="headerlink" title="简单记忆："></a>简单记忆：</h2><blockquote>
 <ul>
 <li>Block如果没有引用外部变量<br>保存在<code>全局区</code>（MRC/ARC一样）</li>
 <li>Block如果引用外部变量<br>ARC保存在 <code>堆区</code>； MRC保存在 <code>栈区</code>必须用copy修饰block；</li>
@@ -290,7 +290,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS Block原理和内存中位置/" data-id="cj9zu83do0015acs6z0c5ffn3" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS Block原理和内存中位置/" data-id="cja2rnjmp0000hxs6fhlseyhp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -365,19 +365,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/07/28/深入浅出－iOS内存分配与分区/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus récent</strong>
-            <div class="article-nav-title">
-                
-                    深入浅出－iOS内存分配与分区
-                
-            </div>
-        </a>
     
-    
-        <a href="/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus ancien</strong>
-            <div class="article-nav-title">深入浅出－iOS的TCP/IP协议族剖析&amp;&amp;Socket</div>
+        <a href="/2016/07/28/深入浅出－iOS内存分配与分区/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">深入浅出－iOS内存分配与分区</div>
         </a>
     
 </nav>
@@ -397,14 +388,14 @@
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Récents</h3>
+        <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -415,7 +406,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -442,7 +433,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -453,7 +444,26 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
+                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -477,25 +487,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
-                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -503,7 +494,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Catégories</h3>
+        <h3 class="widget-title">categories</h3>
         <div class="widget">
             <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li></ul>
         </div>
@@ -512,7 +503,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archives</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
@@ -521,7 +512,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Tags</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深入浅出/">深入浅出</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">6</span></li></ul>
         </div>
@@ -530,7 +521,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Nuage de tags</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
             <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/深入浅出/" style="font-size: 10px;">深入浅出</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
         </div>
@@ -539,12 +530,12 @@
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">Liens</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
                     <li>
-                        <a href="https://github.com/yangsanchao/">Hexo</a>
+                        <a href="https://github.com/yangsanchao/">yangsanchao</a>
                     </li>
                 
             </ul>

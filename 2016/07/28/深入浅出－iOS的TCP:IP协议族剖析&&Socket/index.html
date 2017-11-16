@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
     <meta charset="utf-8">
     
-    <title>深入浅出－iOS的TCP/IP协议族剖析&amp;&amp;Socket | Hexo</title>
+    <title>深入浅出－iOS的TCP/IP协议族剖析&amp;&amp;Socket | Yangsc</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #简介该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。（－－该文很干，酝酿了许久！你能耐心看完吗？O_o） 我在这个文章中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。 传输层（">
+    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   简介该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。（－－该文很干，酝酿了许久！你能耐心看完吗？O_o） 我在这个文章中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。 传输层（T">
 <meta name="keywords" content="网络,深入浅出,iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出－iOS的TCP&#x2F;IP协议族剖析&amp;&amp;Socket">
 <meta property="og:url" content="http://yoursite.com/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #简介该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。（－－该文很干，酝酿了许久！你能耐心看完吗？O_o） 我在这个文章中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。 传输层（">
+<meta property="og:site_name" content="Yangsc">
+<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   简介该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。（－－该文很干，酝酿了许久！你能耐心看完吗？O_o） 我在这个文章中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。 传输层（T">
+<meta property="og:locale" content="english">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-c5842e3714145b94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-749d23000ec36f87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-5ab11b14ed460183.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-f11be16e57524586.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-34b7d082f0b3617c.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2017-11-14T16:39:29.000Z">
+<meta property="og:updated_time" content="2017-11-16T17:43:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出－iOS的TCP&#x2F;IP协议族剖析&amp;&amp;Socket">
-<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #简介该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。（－－该文很干，酝酿了许久！你能耐心看完吗？O_o） 我在这个文章中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。 传输层（">
+<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   简介该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。（－－该文很干，酝酿了许久！你能耐心看完吗？O_o） 我在这个文章中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。 传输层（T">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1156719-c5842e3714145b94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
 
@@ -56,7 +57,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">Hexo</span>
+                <span class="site-title">Yangsc</span>
             </a>
             <nav id="main-nav">
                 
@@ -85,7 +86,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -104,9 +105,9 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Articles',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Catégories',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
@@ -138,7 +139,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -158,16 +159,16 @@
             <h2 id="name">Yangsc</h2>
             <h3 id="title">iOS Developer &amp; Concentrate on AV &amp; big data</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
-            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">SUIVRE</a>
+            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
                 6
-                <span>Articles</span>
+                <span>posts</span>
             </div>
             <div class="article-info-block">
                 3
-                <span>Tags</span>
+                <span>tags</span>
             </div>
         </div>
         
@@ -245,11 +246,11 @@
 <li><a href="http://www.jianshu.com/users/9913981cb400/latest_articles" target="_blank" rel="external">原创文章</a>，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
 </ul>
 <hr>
-<p>#简介<br>该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。<strong><em>（－－该文很干，酝酿了许久！你能耐心看完吗？O_o）</em></strong></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>该篇文章主要回顾–TCP/IP协议族中的TCP／UDP、HTTP；还有Socket。<strong><em>（－－该文很干，酝酿了许久！你能耐心看完吗？O_o）</em></strong></p>
 <p>我在这个<a href="http://www.jianshu.com/p/4b9d43c0571a" target="_blank" rel="external">文章</a>中，列举了常见的TCP/IP族中的协议，今天主角是－－传输层协议。</p>
 <p>传输层（Transport Layer）是OSI（<a href="http://www.jianshu.com/p/4b9d43c0571a" target="_blank" rel="external">七层模型</a>)中最重要、最关键的一层,它负责总体的数据传输和数据控制的一层，传输层提供端到端（应用会在网卡注册一个端口号）的交换数据的机制，检查分组编号与次序。传输层对其上三层如会话层等，提供可靠的传输服务，对网络层提供可靠的目的地站点信息。</p>
-<p>#传输层中的协议</p>
-<ul>
+<a id="more"></a>
+<h1 id="传输层中的协议"><a href="#传输层中的协议" class="headerlink" title="传输层中的协议"></a>传输层中的协议</h1><ul>
 <li>传输层它为应用层提供会话和数据报通信服务。</li>
 <li>传输层承担OSI传输层的职责。</li>
 <li>传输层的核心协议是TCP和UDP。<blockquote>
@@ -267,8 +268,7 @@
 </blockquote>
 </li>
 </ol>
-<p>##传输控制协议（TCP）</p>
-<ol>
+<h2 id="传输控制协议（TCP）"><a href="#传输控制协议（TCP）" class="headerlink" title="传输控制协议（TCP）"></a>传输控制协议（TCP）</h2><ol>
 <li>TCP全称是Transmission Control Protocol，中文名为传输控制协议，它可以提供可靠的、面向连接的网络数据传递服务。传输控制协议主要包含下列任务和功能：</li>
 </ol>
 <ul>
@@ -301,20 +301,18 @@
 <h2 id="用户数据报协议（UDP）"><a href="#用户数据报协议（UDP）" class="headerlink" title="用户数据报协议（UDP）"></a>用户数据报协议（UDP）</h2><blockquote>
 <p>UDP全称是User Datagram Protocol，中文名为用户数据报协议。UDP 提供无连接的网络服务，该服务对消息中传输的数据提供不可靠的、最大努力传送。这意味着它不保证数据报的到达，也不保证所传送数据包的顺序是否正确。<br>我最初就有一个疑惑：“既然UDP是一种不可靠的网络协议，那么还有什么使用价值或必要呢？”<br>在有些情况下UDP可能会变得非常有用。因为UDP具有TCP所望尘莫及的速度优势。虽然TCP中植入了各种安全保障功能，但是在实际执行的过程中会占用大量的系统开销，无疑使速度受到严重的影响。反观UDP由于排除了信息可靠传递机制，将安全和排序等功能移交给上层应用来完成，极大地降低了执行时间，使速度得到了保证。</p>
 </blockquote>
-<p>##TCP与端口号</p>
-<blockquote>
+<h2 id="TCP与端口号"><a href="#TCP与端口号" class="headerlink" title="TCP与端口号"></a>TCP与端口号</h2><blockquote>
 <p>TCP和UDP都是IP层面的传输协议，是IP与上层之间的处理接口。TCP和UDP端口号被设计来区分运行在单个设备上的多重应用程序的IP地址。由于同一台计算机上可能会运行多个网络应用程序，所以计算机需要确保目标计算机上接收源主机数据包的软件应用程序的正确性，以及响应能够被发送到源主机的正确应用程序上。该过程正是通过使用TCP或UDP端口号来实现的。<br><strong><em>－－即每一个应用都会在网卡上注册一个端口号用来区分同一台设备上应用的之间的通信</em></strong></p>
 <p>在TCP和UDP头部分，有“源端口”和“目标端口”段，主要用于显示发送和接收过程中的身份识别信息。IP 地址和端口号合在一起被称为“套接字”。TCP端口比较复杂，其工作方式与UDP端口不同。UDP端口对于基于UDP的通信作为单一消息队列和网络端点来操作，而所有TCP通信的终点都是唯一的连接。每个TCP连接由两个端点唯一识别。由于所有TCP连接由两对 IP 地址和TCP端口唯一识别（每个所连主机都有一个地址/端口对），因此每个TCP服务器端口都能提供对多个连接的共享访问<br><strong><em>再看一下IP数据包和TCP／UDP的数据包</em></strong><br><img src="http://upload-images.jianshu.io/upload_images/1156719-749d23000ec36f87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据包.png"></p>
 </blockquote>
-<p>#HTTP协议<br>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。<br>http协议规定了客户端和服务器之间的数据传输格式.</p>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。<br>http协议规定了客户端和服务器之间的数据传输格式.</p>
 <ul>
 <li>http优点:<blockquote>
 <p>简单快速:<br>http协议简单,通信速度很快;<br>灵活:<br>http协议允许传输任意类型的数据;<br>短连接:<br>http协议限制每次连接只处理一个请求,服务器对客户端的请求作出响应后,马上断开连接.这种方式可以节省传输时间.</p>
 </blockquote>
 </li>
 </ul>
-<p>##http协议的使用</p>
-<ol>
+<h2 id="http协议的使用"><a href="#http协议的使用" class="headerlink" title="http协议的使用"></a>http协议的使用</h2><ol>
 <li><p>请求:客户端向服务器索要数据.<br>http协议规定:一个完整的http请求包含’请求行’,’请求头’,’请求体’三个部分;</p>
 <ul>
 <li>请求行：包含了请求方法,请求资源路径,http协议版本.  “GET /resources/images/ HTTP/1.1”              </li>
@@ -345,7 +343,7 @@
 </ul>
 </li>
 </ol>
-<p>###http方法<br>http协议定义了很多方法对应不同的资源操作,其中最常用的是GET和POST方法。<br>eg：GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT、PATCH<br>增:PUT<br>删:DELETE<br>改:POST<br>查:GET<br>因为GET和POST可以实现上述所有操作,所以,在现实开发中,GET和POST方法使用的最为广泛，除此以外HEAD请求使用频率也比较高；</p>
+<h3 id="http方法"><a href="#http方法" class="headerlink" title="http方法"></a>http方法</h3><p>http协议定义了很多方法对应不同的资源操作,其中最常用的是GET和POST方法。<br>eg：GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT、PATCH<br>增:PUT<br>删:DELETE<br>改:POST<br>查:GET<br>因为GET和POST可以实现上述所有操作,所以,在现实开发中,GET和POST方法使用的最为广泛，除此以外HEAD请求使用频率也比较高；</p>
 <ul>
 <li>GET<blockquote>
 <p>在请求URL后面以?的形式跟上发给服务器的参数,参数以”参数名”=”参数值”的形式拼接,多个参数之间用&amp;分隔;<br>GET的本质是从服务器得到数据,效率更高.并且GET请求可以被缓存.<br>注意:GET的长度是有限制的,不同的浏览器有不同的长度限制,一般在2~8K之间;</p>
@@ -360,15 +358,12 @@
 </blockquote>
 </li>
 </ul>
-<p>###响应消息<br>1xx:信息响应类，表示接收到请求并且继续处理<br>2xx:处理成功响应类，表示动作被成功接收、理解和接受<br>3xx:<a href="http://baike.baidu.com/view/1245190.htm" target="_blank" rel="external">重定向</a>响应类，为了完成指定的动作，必须接受进一步处理<br>4xx:客户端错误，客户请求包含语法错误或者是不能正确执行<br>5xx:服务端错误，服务器不能正确执行一个正确的请求;<br>详细描述：<a href="http://baike.baidu.com/link?url=3WXlrLc6tsB9rOD3rVwFoniTZLYTSKE2RErxcebexqoEWPs9aOBJKtcQaZNbiuIFSXKQa4EM1gSvk8EdF6Ei-gD0mW8dctgWNJLPa2tHGY4LmUoeTlO1BOgO_yMfBePPwq9MiCbz9oLPZs3cBPiN-GU6D8t_KQSjsUNz7QXQ8ZO" target="_blank" rel="external">状态码</a></p>
-<p>#Socket</p>
-<p>##Socket 简介</p>
-<ul>
+<h3 id="响应消息"><a href="#响应消息" class="headerlink" title="响应消息"></a>响应消息</h3><p>1xx:信息响应类，表示接收到请求并且继续处理<br>2xx:处理成功响应类，表示动作被成功接收、理解和接受<br>3xx:<a href="http://baike.baidu.com/view/1245190.htm" target="_blank" rel="external">重定向</a>响应类，为了完成指定的动作，必须接受进一步处理<br>4xx:客户端错误，客户请求包含语法错误或者是不能正确执行<br>5xx:服务端错误，服务器不能正确执行一个正确的请求;<br>详细描述：<a href="http://baike.baidu.com/link?url=3WXlrLc6tsB9rOD3rVwFoniTZLYTSKE2RErxcebexqoEWPs9aOBJKtcQaZNbiuIFSXKQa4EM1gSvk8EdF6Ei-gD0mW8dctgWNJLPa2tHGY4LmUoeTlO1BOgO_yMfBePPwq9MiCbz9oLPZs3cBPiN-GU6D8t_KQSjsUNz7QXQ8ZO" target="_blank" rel="external">状态码</a></p>
+<h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><h2 id="Socket-简介"><a href="#Socket-简介" class="headerlink" title="Socket 简介"></a>Socket 简介</h2><ul>
 <li>Socket起源于 20 世 纪 80 年代早期,最早由 4.1c BSD UNIX 引入,所以也称之为“BSD Socket 或者 Berkeley Socket”。BSD Socket 是事实上的网络应用编程接口标准,其它编程语言往往也是用与这套（用C写成的编程接口）类似接口。</li>
 <li>用 Socket 能够实现网络上的不同主机之间或同一主机的不同对象之间的数据通信。所以,现在 Socket 已经是一类通用通信接口的集合。<br>大的类型可以分为网络 Socket 和本地 Socket 两种。</li>
 </ul>
-<p>###本地上的两个进程如何通信?</p>
-<blockquote>
+<h3 id="本地上的两个进程如何通信"><a href="#本地上的两个进程如何通信" class="headerlink" title="本地上的两个进程如何通信?"></a>本地上的两个进程如何通信?</h3><blockquote>
 <ul>
 <li>内存共享(<code>munmap()</code>)；</li>
 <li>消息和队列；</li>
@@ -378,12 +373,10 @@
 <li>本地Socket;</li>
 </ul>
 </blockquote>
-<p>###网路上的两个进程如何通信？</p>
-<blockquote>
+<h3 id="网路上的两个进程如何通信？"><a href="#网路上的两个进程如何通信？" class="headerlink" title="网路上的两个进程如何通信？"></a>网路上的两个进程如何通信？</h3><blockquote>
 <p>本地进程间通信(IPC)通过PID(在终端中输入ps -ef可查看PID)可以唯一确定彼此，然后通过共享内存，消息队列来通;网络上的两个进程确定彼此需要IP与端口号，通过传输层(TCP/UDP)协议进行通信；<br>这就是网络 Socket 。<br><code>socket可以理解为：在TCP/UDP 加一个端口(在网卡注册的，还记得吧)绑定。</code></p>
 </blockquote>
-<p>###网路socket和 本地 Socket对比</p>
-<blockquote>
+<h3 id="网路socket和-本地-Socket对比"><a href="#网路socket和-本地-Socket对比" class="headerlink" title="网路socket和 本地 Socket对比"></a>网路socket和 本地 Socket对比</h3><blockquote>
 <ul>
 <li>在同一个设备上，两个进程如果需要进行通讯最基本的一个前提能能够唯一的标示一个进程，在本地进程通讯中可以使用PID来唯一标示一个进程；</li>
 <li>PID只在本地唯一，网络中的两个进程PID冲突几率很大，此时显然不行了，怎么办？<br>IP层的ip地址可以唯一标示主机，而TCP层协议和端口号可以唯一标示主机的一个进程，所以可以利用ip地址＋协议＋端口号唯一标示网络中的一个进程。</li>
@@ -392,8 +385,7 @@
 <p>Socket通信就是一种确定了端口号的TCP/IP通信，或者说Socket通信与IP通信差别就是端口确定，协议确定。</p>
 <p>用一张图表达一下：<br><img src="http://upload-images.jianshu.io/upload_images/1156719-5ab11b14ed460183.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Socket.png"></p>
 <p>端口的打开是双方的，在C/S（Client&amp;&amp;Server）结构的TCP连接中不仅仅要注意到S的端口(监听的)，实际上C也开了一个端口，而C端的端口是动态端口，TCP连接建立的时候，C端的端口会在三次握手结束后确定，动态打开一个,这个端口不受用户/程序员的控制。</p>
-<p>###Socket C 端书写步骤</p>
-<ol>
+<h3 id="Socket-C-端书写步骤"><a href="#Socket-C-端书写步骤" class="headerlink" title="Socket C 端书写步骤"></a>Socket C 端书写步骤</h3><ol>
 <li>创建客户端Socket      </li>
 <li>创建服务器Socket        </li>
 <li>连接到服务器(Socket编程)   </li>
@@ -402,7 +394,7 @@
 <li>关闭Socket  : close(socketNumber)</li>
 </ol>
 <p>一张经典的Socket C/S的步骤图。<br><img src="http://upload-images.jianshu.io/upload_images/1156719-f11be16e57524586.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Socket.jpg"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">1.  导入头文件</span><br><span class="line">#import &lt;sys/socket.h&gt; //socket相关</span><br><span class="line">#import &lt;netinet/in.h&gt;  //internet相关</span><br><span class="line">#import &lt;arpa/inet.h&gt;   //地址解析协议相关</span><br><span class="line">2. socket(创建)</span><br><span class="line">     int socket(int, int, int);</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     第一个int：domain:    协议域，AF_INET（IPV4的网络开发）</span><br><span class="line">     第二个int：type:      Socket 类型，  SOCK_STREAM(TCP)/SOCK_DGRAM(UDP，报文)</span><br><span class="line">     第三个int：protocol:  IPPROTO_TCP，协议，如果输入0，可以根据第二个参数，自动选择协议</span><br><span class="line">     返回值</span><br><span class="line">     socket，如果 &gt; 0 就表示成功</span><br><span class="line">     */</span><br><span class="line">3. connection (连接到“服务器)</span><br><span class="line">    connect(int, const struct sockaddr *, socklen_t)</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     1&gt; 客户端socket</span><br><span class="line">     2&gt; 指向数据结构sockaddr的指针，其中包括目的端口和IP地址</span><br><span class="line">        服务器的&quot;结构体&quot;地址，C语言没有对象</span><br><span class="line">     3&gt; 结构体数据长度</span><br><span class="line">     返回值</span><br><span class="line">     0 成功/其他 错误代号</span><br><span class="line">     */</span><br><span class="line">4. write(发送数据)</span><br><span class="line">    send(int, const void *, size_t, int)</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     1&gt; 客户端socket</span><br><span class="line">     2&gt; 发送内容地址 void * == id</span><br><span class="line">     3&gt; 发送内容长度</span><br><span class="line">     4&gt; 发送方式标志，一般为0</span><br><span class="line">     返回值</span><br><span class="line">     如果成功，则返回发送的字节数，失败则返回SOCKET_ERROR</span><br><span class="line">      */</span><br><span class="line">5. read (接收)</span><br><span class="line">    recv(int, void *, size_t, int)</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     第一个int :创建的socket</span><br><span class="line">     void *：接收内容的地址</span><br><span class="line">     size_t：接收内容的长度</span><br><span class="line">     第二个int.：接收数据的标记 0，就是阻塞式，一直等待服务器的数据 </span><br><span class="line">     返回值</span><br><span class="line">     接收到的数据长度</span><br><span class="line">     */</span><br><span class="line">6. close</span><br><span class="line">    close(int);</span><br><span class="line">    int:就是创建的socket</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.  导入头文件</span><br><span class="line">#import &lt;sys/socket.h&gt; //socket相关</span><br><span class="line">#import &lt;netinet/in.h&gt;  //internet相关</span><br><span class="line">#import &lt;arpa/inet.h&gt;   //地址解析协议相关</span><br><span class="line">2. socket(创建)</span><br><span class="line">     int socket(int, int, int);</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     第一个int：domain:    协议域，AF_INET（IPV4的网络开发）</span><br><span class="line">     第二个int：type:      Socket 类型，  SOCK_STREAM(TCP)/SOCK_DGRAM(UDP，报文)</span><br><span class="line">     第三个int：protocol:  IPPROTO_TCP，协议，如果输入0，可以根据第二个参数，自动选择协议</span><br><span class="line">     返回值</span><br><span class="line">     socket，如果 &gt; 0 就表示成功</span><br><span class="line">     */</span><br><span class="line">3. connection (连接到“服务器)</span><br><span class="line">    connect(int, const struct sockaddr *, socklen_t)</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     1&gt; 客户端socket</span><br><span class="line">     2&gt; 指向数据结构sockaddr的指针，其中包括目的端口和IP地址</span><br><span class="line">        服务器的&quot;结构体&quot;地址，C语言没有对象</span><br><span class="line">     3&gt; 结构体数据长度</span><br><span class="line">     返回值</span><br><span class="line">     0 成功/其他 错误代号</span><br><span class="line">     */</span><br><span class="line">4. write(发送数据)</span><br><span class="line">    send(int, const void *, size_t, int)</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     1&gt; 客户端socket</span><br><span class="line">     2&gt; 发送内容地址 void * == id</span><br><span class="line">     3&gt; 发送内容长度</span><br><span class="line">     4&gt; 发送方式标志，一般为0</span><br><span class="line">     返回值</span><br><span class="line">     如果成功，则返回发送的字节数，失败则返回SOCKET_ERROR</span><br><span class="line">      */</span><br><span class="line">5. read (接收)</span><br><span class="line">    recv(int, void *, size_t, int)</span><br><span class="line">    /**</span><br><span class="line">     参数</span><br><span class="line">     第一个int :创建的socket</span><br><span class="line">     void *：接收内容的地址</span><br><span class="line">     size_t：接收内容的长度</span><br><span class="line">     第二个int.：接收数据的标记 0，就是阻塞式，一直等待服务器的数据 </span><br><span class="line">     返回值</span><br><span class="line">     接收到的数据长度</span><br><span class="line">     */</span><br><span class="line">6. close</span><br><span class="line">    close(int);</span><br><span class="line">    int:就是创建的socket</span><br></pre></td></tr></table></figure>
 <p>按照上面5个步骤就可以写一个socket的通信的小demo：<br>写好的已经放在了我的<a href="https://github.com/yscGit/CSSocketDemo" target="_blank" rel="external">github</a>；<br>此时没有写服务端，怎么测试？<br>可利用：nc -lk 端口号:始终监听本地计算机此端口的数据。<br>eg：nc -lk 6666；<br>操作步骤gif<br>1、监听 6666端口<br>2、connettion；<br>3、发送<code>socket</code>；服务器接收到<code>socket</code>；<br>4、服务端send ：hello socket；</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1156719-34b7d082f0b3617c.gif?imageMogr2/auto-orient/strip" alt="操作步骤.gif"></p>
 <h4 id="S端socket通信步骤"><a href="#S端socket通信步骤" class="headerlink" title="S端socket通信步骤"></a>S端socket通信步骤</h4><ol>
@@ -426,7 +418,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/" data-id="cj9zuaupz001cacs6lybewuwv" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://yoursite.com/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/" data-id="cja2rnjn00006hxs61j2blpup" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -501,19 +493,19 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus récent</strong>
+        <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    深入浅出－iOS Block原理和内存中位置
+                    深入浅出－网络七层模型&amp;&amp;网络数据包
                 
             </div>
         </a>
     
     
-        <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus ancien</strong>
-            <div class="article-nav-title">深入浅出－iOS Reactive Cocoa的常见用法</div>
+        <a href="/2016/07/28/深入浅出－iOS函数式编程的实现 && 响应式编程概念/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">深入浅出－iOS函数式编程的实现 &amp;&amp; 响应式编程概念</div>
         </a>
     
 </nav>
@@ -533,14 +525,14 @@
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Récents</h3>
+        <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -551,7 +543,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -578,7 +570,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -589,7 +581,26 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
+                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -613,25 +624,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
-                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -639,7 +631,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Catégories</h3>
+        <h3 class="widget-title">categories</h3>
         <div class="widget">
             <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li></ul>
         </div>
@@ -648,7 +640,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archives</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
@@ -657,7 +649,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Tags</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深入浅出/">深入浅出</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">6</span></li></ul>
         </div>
@@ -666,7 +658,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Nuage de tags</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
             <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/深入浅出/" style="font-size: 10px;">深入浅出</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
         </div>
@@ -675,12 +667,12 @@
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">Liens</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
                     <li>
-                        <a href="https://github.com/yangsanchao/">Hexo</a>
+                        <a href="https://github.com/yangsanchao/">yangsanchao</a>
                     </li>
                 
             </ul>

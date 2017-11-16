@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
     <meta charset="utf-8">
     
-    <title>深入浅出－网络七层模型&amp;&amp;网络数据包 | Hexo</title>
+    <title>深入浅出－网络七层模型&amp;&amp;网络数据包 | Yangsc</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #引言今天回顾一下－－网络七层模型&amp;amp;&amp;amp;网络数据包 #网络基本概念 ##OSI模型OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一">
+    <meta name="description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   引言今天回顾一下－－网络七层模型&amp;amp;&amp;amp;网络数据包 网络基本概念OSI模型OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一个使各种不">
 <meta name="keywords" content="网络,深入浅出,iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出－网络七层模型&amp;&amp;网络数据包">
 <meta property="og:url" content="http://yoursite.com/2016/07/28/深入浅出－网络七层模型&&网络数据包/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #引言今天回顾一下－－网络七层模型&amp;amp;&amp;amp;网络数据包 #网络基本概念 ##OSI模型OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一">
+<meta property="og:site_name" content="Yangsc">
+<meta property="og:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   引言今天回顾一下－－网络七层模型&amp;amp;&amp;amp;网络数据包 网络基本概念OSI模型OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一个使各种不">
+<meta property="og:locale" content="english">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-0c6704aa11ae4908.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1156719-d9684a2e160f62ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-14T16:38:36.000Z">
+<meta property="og:updated_time" content="2017-11-16T17:38:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出－网络七层模型&amp;&amp;网络数据包">
-<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   #引言今天回顾一下－－网络七层模型&amp;amp;&amp;amp;网络数据包 #网络基本概念 ##OSI模型OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一">
+<meta name="twitter:description" content="Posted by 微博@iOS音视频 原创文章，版权声明：自由转载-非商用-非衍生-保持署名 | Creative Commons BY-NC-ND 3.0   引言今天回顾一下－－网络七层模型&amp;amp;&amp;amp;网络数据包 网络基本概念OSI模型OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一个使各种不">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
 
@@ -54,7 +55,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">Hexo</span>
+                <span class="site-title">Yangsc</span>
             </a>
             <nav id="main-nav">
                 
@@ -83,7 +84,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -102,9 +103,9 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Articles',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Catégories',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
@@ -136,7 +137,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -156,16 +157,16 @@
             <h2 id="name">Yangsc</h2>
             <h3 id="title">iOS Developer &amp; Concentrate on AV &amp; big data</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
-            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">SUIVRE</a>
+            <a id="follow" target="_blank" href="https://github.com/yangsanchao/">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
                 6
-                <span>Articles</span>
+                <span>posts</span>
             </div>
             <div class="article-info-block">
                 3
-                <span>Tags</span>
+                <span>tags</span>
             </div>
         </div>
         
@@ -243,10 +244,11 @@
 <li><a href="http://www.jianshu.com/users/9913981cb400/latest_articles" target="_blank" rel="external">原创文章</a>，版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
 </ul>
 <hr>
-<p>#引言<br>今天回顾一下－－网络七层模型&amp;&amp;网络数据包</p>
-<p>#网络基本概念</p>
-<p>##OSI模型<br>OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一个使各种不同的计算机和网络在世界范围内实现互联的标准框架。<br>它将计算机网络体系结构划分为七层,每层都可以􏰁供抽象良好的接口。了解 OSI 模型有助于理解实际上互联网络的工业标准——TCP/IP 协议。<br>OSI 模型各层间关系和通讯时的数据流向如图所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="OSI 模型.png"><br>显然、如果一个东西想包罗万象、一般时不可能的；在实际的开发应用中一般时在此模型的基础上进行裁剪、整合！</p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>今天回顾一下－－网络七层模型&amp;&amp;网络数据包</p>
+<h1 id="网络基本概念"><a href="#网络基本概念" class="headerlink" title="网络基本概念"></a>网络基本概念</h1><h2 id="OSI模型"><a href="#OSI模型" class="headerlink" title="OSI模型"></a>OSI模型</h2><p>OSI 模型(Open System Interconnection model)是一个由国际标准化组织􏰁提出的概念模型,试图􏰁供一个使各种不同的计算机和网络在世界范围内实现互联的标准框架。<br>它将计算机网络体系结构划分为七层,每层都可以􏰁供抽象良好的接口。了解 OSI 模型有助于理解实际上互联网络的工业标准——TCP/IP 协议。<br>OSI 模型各层间关系和通讯时的数据流向如图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1156719-afc57efbe98be4f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="OSI 模型.png"></p>
+<a id="more"></a>
+<p>显然、如果一个东西想包罗万象、一般时不可能的；在实际的开发应用中一般时在此模型的基础上进行裁剪、整合！</p>
 <p>七层模型介绍</p>
 <ul>
 <li>物理层：<br>物理层负责最后将信息编码成电流脉冲或其它信号用于网上传输；<br><code>eg：RJ45等将数据转化成0和1；</code></li>
@@ -259,14 +261,13 @@
 </ul>
 <p>常见的应用层协议：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1156719-0c6704aa11ae4908.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="常见的应用层协议.png"><br>互联网分层结构的好处: 上层的变动完全不影响下层的结构。</p>
-<p>##TCP/IP 协议基本概念</p>
-<p>OSI 模型所分的七层,在实际应用中,往往有一些层被整合,或者功能分散到其他层去。TCP/IP 没有照搬 OSI 模型,也没有 一个公认的 TCP/IP 层级模型,一般划分为三层到五层模型来􏰂述 TCP/IP 协议。</p>
+<h2 id="TCP-IP-协议基本概念"><a href="#TCP-IP-协议基本概念" class="headerlink" title="TCP/IP 协议基本概念"></a>TCP/IP 协议基本概念</h2><p>OSI 模型所分的七层,在实际应用中,往往有一些层被整合,或者功能分散到其他层去。TCP/IP 没有照搬 OSI 模型,也没有 一个公认的 TCP/IP 层级模型,一般划分为三层到五层模型来􏰂述 TCP/IP 协议。</p>
 <ul>
 <li>在此描述用一个通用的四层模型来描述,每一层都和 OSI 模型有较强的相关性但是又可能会有交叉。</li>
 <li>TCP/IP 的设计,是吸取了分层模型的精华思想——封装。每层对上一层􏰁供服务的时 候,上一层的数据结构是黑盒,直接作为本层的数据,而不需要关心上一层协议的任何细节。</li>
 </ul>
 <p>TCP/IP 分层模型的分层以以太网上传输 UDP 数据包如图所示;<br><img src="http://upload-images.jianshu.io/upload_images/1156719-d9684a2e160f62ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UDP 数据包.png"></p>
-<p>###数据包<br>宽泛意义的数据包:每一个数据包都包含”标头”和”数据”两个部分.”标头”包含本数据包的一些说明.”数据”则是本数据包的内容.</p>
+<h3 id="数据包"><a href="#数据包" class="headerlink" title="数据包"></a>数据包</h3><p>宽泛意义的数据包:每一个数据包都包含”标头”和”数据”两个部分.”标头”包含本数据包的一些说明.”数据”则是本数据包的内容.</p>
 <p>细分数据包：</p>
 <ul>
 <li><p>应用程序数据包: 标头部分规定应用程序的数据格式.数据部分传输具体的数据内容.<strong><em> ——对应上图中的数据！</em></strong> </p>
@@ -278,8 +279,7 @@
 <li><p>以太网数据包: 最基础的数据包.标头部分包含了通信双方的MAC地址,数据类型等. ‘标头’长度:18字节,’数据’部分长度:46~1500字节. <strong><em> ——对应上图中的以太网数据</em></strong> </p>
 </li>
 </ul>
-<p>###四层模型</p>
-<ol>
+<h3 id="四层模型"><a href="#四层模型" class="headerlink" title="四层模型"></a>四层模型</h3><ol>
 <li>网络接口层<br>网络接口层包括用于协作IP数据在已有网络介质上传输的协议。<br>它定义像地址解析协议(Address Resolution Protocol,ARP)这样的协议,􏰁供 TCP/IP 协议的数据结构和实际物理硬件之间的接口。<br><code>可以理解为：确定了网络数据包的形式</code>。</li>
 <li>网间层<br>网间层对应于 OSI 七层参考模型的网络层，本层包含 IP 协议、RIP 协议(Routing Information Protocol,路由信息协议),负责数据的包装、寻址和路由。同时还包含网间控制报文协议(Internet Control Message Protocol,ICMP)用来􏰁供网络诊断信息；<br><code>可以理解为：该层时确定计算机的位置</code>。</li>
 <li><p>传输层<br>传输层对应于 OSI 七层参考模型的传输层,它􏰁供两种端到端的通信服务。其中 TCP 协议(Transmission Control Protocol)􏰁供可靠的数据流运输服务,UDP 协议(Use Datagram Protocol)􏰁供不可靠的用户数据报服务。<br><code>TCP:三次握手、四次挥手;UDP:只发不管别人收不收得到--任性哈</code></p>
@@ -287,8 +287,7 @@
 <li><p>应用层<br>应用层对应于 OSI 七层参考模型的应用层和表达层；<br><code>不明白的再看看7层参考模型的描述</code>。</p>
 </li>
 </ol>
-<p>###TCP/IP 协议族常用协议</p>
-<ul>
+<h3 id="TCP-IP-协议族常用协议"><a href="#TCP-IP-协议族常用协议" class="headerlink" title="TCP/IP 协议族常用协议"></a>TCP/IP 协议族常用协议</h3><ul>
 <li>应用层：TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet 等等</li>
 <li>传输层：TCP，UDP</li>
 <li>网络层：IP，ICMP，OSPF，EIGRP，IGMP</li>
@@ -330,7 +329,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/07/28/深入浅出－网络七层模型&&网络数据包/" data-id="cj9zu4qmw000lacs6i2vi1j71" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://yoursite.com/2016/07/28/深入浅出－网络七层模型&&网络数据包/" data-id="cja2rnjmz0005hxs6t9lq7g7b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -405,10 +404,19 @@
         
 <nav id="article-nav">
     
+        <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    深入浅出－iOS Reactive Cocoa的常见用法
+                
+            </div>
+        </a>
     
-        <a href="/2016/07/28/深入浅出－iOS内存分配与分区/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus ancien</strong>
-            <div class="article-nav-title">深入浅出－iOS内存分配与分区</div>
+    
+        <a href="/2016/07/28/深入浅出－iOS的TCP:IP协议族剖析&&Socket/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">深入浅出－iOS的TCP/IP协议族剖析&amp;&amp;Socket</div>
         </a>
     
 </nav>
@@ -428,14 +436,14 @@
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Récents</h3>
+        <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -446,7 +454,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -473,7 +481,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="thumbnail">
+                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -484,7 +492,26 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Block原理和内存中位置/" class="title">深入浅出－iOS Block原理和内存中位置</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
+                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
+                            <p class="item-title"><a href="/2016/07/28/深入浅出－网络七层模型&&网络数据包/" class="title">深入浅出－网络七层模型&amp;&amp;网络数据包</a></p>
                             <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
                         </div>
                     </li>
@@ -508,25 +535,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a></p>
-                            <p class="item-title"><a href="/2016/07/28/深入浅出－iOS Reactive Cocoa的常见用法/" class="title">深入浅出－iOS Reactive Cocoa的常见用法</a></p>
-                            <p class="item-date"><time datetime="2016-07-28T02:48:16.000Z" itemprop="datePublished">2016-07-28</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -534,7 +542,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Catégories</h3>
+        <h3 class="widget-title">categories</h3>
         <div class="widget">
             <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">6</span></li></ul>
         </div>
@@ -543,7 +551,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archives</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
@@ -552,7 +560,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Tags</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深入浅出/">深入浅出</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">6</span></li></ul>
         </div>
@@ -561,7 +569,7 @@
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Nuage de tags</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
             <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/深入浅出/" style="font-size: 10px;">深入浅出</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
         </div>
@@ -570,12 +578,12 @@
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">Liens</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
                     <li>
-                        <a href="https://github.com/yangsanchao/">Hexo</a>
+                        <a href="https://github.com/yangsanchao/">yangsanchao</a>
                     </li>
                 
             </ul>
