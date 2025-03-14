@@ -1,16 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Github Page demo</title>
+    <title>极客博客 | GeekBlog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="index.js"></script>
+    <meta name="description" content="一个极客风格的技术博客">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 </head>
 <body>
-    <div id="main-content">
-
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">
+                <span class="logo-text">GeekBlog</span>
+                <span class="logo-cursor">_</span>
+            </div>
+            <nav class="site-nav">
+                <a href="#" class="nav-link active" data-page="home">首页</a>
+                <a href="#" class="nav-link" data-page="archives">归档</a>
+                <a href="#" class="nav-link" data-page="tags">标签</a>
+                <a href="#" class="nav-link" data-page="about">关于</a>
+            </nav>
+        </header>
+        
+        <main class="site-main">
+            <div id="page-home" class="page-content active">
+                <div class="posts-list">
+                    <!-- 文章列表将在这里动态加载 -->
+                </div>
+            </div>
+            
+            <div id="page-archives" class="page-content">
+                <h2 class="page-title">文章归档</h2>
+                <div class="archives-list">
+                    <!-- 按日期归档的文章将在这里动态加载 -->
+                </div>
+            </div>
+            
+            <div id="page-tags" class="page-content">
+                <h2 class="page-title">标签云</h2>
+                <div class="tags-cloud">
+                    <!-- 标签云将在这里动态加载 -->
+                </div>
+                <div class="tag-posts">
+                    <!-- 特定标签的文章将在这里动态加载 -->
+                </div>
+            </div>
+            
+            <div id="page-about" class="page-content">
+                <h2 class="page-title">关于我</h2>
+                <div class="about-content">
+                    <p>这是一个使用GitHub Pages搭建的极客风格博客网站，支持Markdown格式的文章展示。</p>
+                    <p>特性：</p>
+                    <ul>
+                        <li>响应式设计，兼容各种设备</li>
+                        <li>极客风格的UI界面</li>
+                        <li>支持Markdown文件渲染</li>
+                        <li>按日期和标签分类文章</li>
+                        <li>代码高亮显示</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="page-post" class="page-content">
+                <!-- 单篇文章内容将在这里动态加载 -->
+            </div>
+        </main>
+        
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>&copy; <span id="current-year"></span> GeekBlog. 由 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> 强力驱动。</p>
+            </div>
+        </footer>
     </div>
+    
+    <!-- 文章模板 -->
+    <template id="post-template">
+        <article class="post-item">
+            <h2 class="post-title"><a href="#" class="post-link"></a></h2>
+            <div class="post-meta">
+                <span class="post-date"><i class="fas fa-calendar-alt"></i> </span>
+                <span class="post-tags"></span>
+            </div>
+            <div class="post-excerpt"></div>
+            <a href="#" class="read-more">阅读全文 <i class="fas fa-angle-right"></i></a>
+        </article>
+    </template>
+    
+    <!-- 标签模板 -->
+    <template id="tag-template">
+        <a href="#" class="tag-item"></a>
+    </template>
+    
+    <!-- 引入库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@5.0.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.7/dayjs.min.js"></script>
+    
+    <!-- 自定义脚本 -->
+    <script src="js/config.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

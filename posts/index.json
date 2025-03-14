@@ -1,0 +1,16 @@
+[
+  {
+    "title": "3FS: 高性能分布式文件系统概述",
+    "slug": "3fs",
+    "date": "2025-03-13",
+    "tags": ["分布式系统", "文件系统", "AI", "大数据", "存储技术"],
+    "excerpt": "Fire-Flyer File System (3FS) 是一个专为 AI 训练和推理工作负载设计的高性能分布式文件系统，充分利用现代 SSD 和 RDMA 网络技术。"
+  },
+  {
+    "title": "深入理解Git工作流",
+    "slug": "understanding-git-workflow",
+    "date": "2025-03-05",
+    "tags": ["Git", "版本控制", "工作流"],
+    "excerpt": "掌握Git工作流可以让团队协作更加高效，本文详细介绍了几种常见的Git工作流模型。"
+  }
+]
